@@ -226,7 +226,7 @@ export default {
       <img
         :src="globalConfig.logo"
         :alt="globalConfig.installationName"
-        class="block w-auto h-24 mx-auto dark:hidden"
+        class="block w-auto h-16 mx-auto dark:hidden"
       />
       <img
         v-if="globalConfig.logoDark"
