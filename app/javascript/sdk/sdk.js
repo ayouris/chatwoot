@@ -54,6 +54,12 @@ export const SDK_CSS = `
   overflow: hidden;
 }
 
+.woot-widget-bubble-center-img {
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+}
+
 .woot-widget-bubble.woot-widget-bubble--flat {
   border-radius: 0;
 }
@@ -162,7 +168,7 @@ export const SDK_CSS = `
   content: ' ';
   display: inline;
   height: 24px;
-  left: 32px;
+  left: 31px;
   position: absolute;
   top: 20px;
   width: 2px;
