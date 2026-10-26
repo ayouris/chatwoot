@@ -1,5 +1,9 @@
 class Integrations::Slack::SendOnSlackService < Base::SendOnChannelService
   include RegexHelper
+
+  # Compared as a string so CE installs, which never load the enterprise constant, still work.
+  CAPTAIN_SENDER_TYPE = 'Captain::Assistant'.freeze
+
   pattr_initialize [:message!, :hook!]
 
   def perform
@@ -88,8 +92,9 @@ class Integrations::Slack::SendOnSlackService < Base::SendOnChannelService
     ''
   end
 
+  # Each sender type has a default avatar under public/integrations/slack, named <type>_avatar.png.
   def avatar_url(sender)
-    sender_type = sender_type(sender).downcase
+    sender_type = "#{sender_type(sender).downcase}_avatar"
     blob_key = sender&.avatar&.attached? ? sender.avatar.blob.key : nil
     generate_url(sender_type, blob_key)
   end
@@ -102,7 +107,8 @@ class Integrations::Slack::SendOnSlackService < Base::SendOnChannelService
   def send_message
     post_message if message_content.present?
     upload_files if message.attachments.any?
-  rescue Slack::Web::Api::Errors::AccountInactive, Slack::Web::Api::Errors::MissingScope, Slack::Web::Api::Errors::InvalidAuth,
+  rescue Slack::Web::Api::Errors::IsArchived, Slack::Web::Api::Errors::AccountInactive, Slack::Web::Api::Errors::MissingScope,
+         Slack::Web::Api::Errors::InvalidAuth,
          Slack::Web::Api::Errors::ChannelNotFound, Slack::Web::Api::Errors::NotInChannel => e
     Rails.logger.error e
     hook.prompt_reauthorization!
@@ -175,8 +181,10 @@ class Integrations::Slack::SendOnSlackService < Base::SendOnChannelService
   def sender_type(sender)
     if sender.instance_of?(Contact)
       'Contact'
-    elsif sender.instance_of?(User)
+    elsif sender.is_a?(User)
       'Agent'
+    elsif message.sender_type == CAPTAIN_SENDER_TYPE
+      'Captain'
     elsif message.message_type == 'activity' && sender.nil?
       'System'
     else

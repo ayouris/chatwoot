@@ -68,7 +68,8 @@
         "API_SUCCESS": "Подпись успешно сохранена",
         "IMAGE_UPLOAD_ERROR": "Не удалось загрузить изображение! Попробуйте снова",
         "IMAGE_UPLOAD_SUCCESS": "Изображение успешно добавлено. Пожалуйста, нажмите сохранить, чтобы сохранить подпись",
-        "IMAGE_UPLOAD_SIZE_ERROR": "Размер изображения должен быть меньше {size}МБ"
+        "IMAGE_UPLOAD_SIZE_ERROR": "Размер изображения должен быть меньше {size}МБ",
+        "INLINE_IMAGE_WARNING": "Pasted inline images were removed. Please use the image upload button to add images to your signature."
       },
       "MESSAGE_SIGNATURE": {
         "LABEL": "Подпись сообщения",
@@ -85,9 +86,21 @@
         "NOTE": "Управление дополнительными функциями безопасности для вашей учетной записи.",
         "MFA_BUTTON": "Управление двухфакторной аутентификацией"
       },
+      "SESSIONS_SECTION": {
+        "TITLE": "Active Sessions",
+        "NOTE": "These are the devices currently logged in to your account.",
+        "CURRENT": "Current session",
+        "REVOKE": "Revoke",
+        "REVOKE_SUCCESS": "Session revoked successfully",
+        "REVOKE_ERROR": "Unable to revoke session. Please try again.",
+        "FETCH_ERROR": "Unable to fetch sessions. Please try again.",
+        "LAST_ACTIVE": "Last active",
+        "UNKNOWN_DEVICE": "Unknown device"
+      },
       "ACCESS_TOKEN": {
         "TITLE": "Токен доступа",
         "NOTE": "Этот токен может быть использован, если вы настраиваете интеграцию на основе API",
+        "PAID_PLAN_NOTE": "API access tokens are available on paid plans.",
         "COPY": "Копировать",
         "RESET": "Сброс",
         "CONFIRM_RESET": "Вы уверены?",
@@ -144,7 +157,8 @@
         "PARTICIPATING_CONVERSATION_NEW_MESSAGE": "Отправлять уведомления по электронной почте, когда в диалоге создается новое сообщение",
         "SLA_MISSED_FIRST_RESPONSE": "Отправить уведомление по электронной почте, если диалог не соответствует SLA первого ответа",
         "SLA_MISSED_NEXT_RESPONSE": "Отправить уведомление по электронной почте, если диалог не успел получить следующий ответ SLA",
-        "SLA_MISSED_RESOLUTION": "Отправить уведомление по электронной почте, если диалог не соответствует SLA"
+        "SLA_MISSED_RESOLUTION": "Отправить уведомление по электронной почте, если диалог не соответствует SLA",
+        "VOICE_CALL_MISSED": "Send email notifications when you miss a call"
       },
       "NOTIFICATIONS": {
         "TITLE": "Настройки уведомлений",
@@ -159,7 +173,8 @@
           "PARTICIPATING_CONVERSATION_NEW_MESSAGE": "В назначенном диалоге создано новое сообщение",
           "SLA_MISSED_FIRST_RESPONSE": "Разговор не соответствует SLA по первому ответу",
           "SLA_MISSED_NEXT_RESPONSE": "Диалог не соответствует SLA по следующему ответу",
-          "SLA_MISSED_RESOLUTION": "Диалог не соответствует SLA по разрешению"
+          "SLA_MISSED_RESOLUTION": "Диалог не соответствует SLA по разрешению",
+          "VOICE_CALL_MISSED": "You miss a call"
         },
         "BROWSER_PERMISSION": "Включите push-уведомления для вашего браузера, чтобы вы могли их получать"
       },
@@ -179,7 +194,8 @@
         "REQUEST_PUSH": "Включить push-уведомления",
         "SLA_MISSED_FIRST_RESPONSE": "Отправить push-уведомление, если диалог не соответствует SLA первого ответа",
         "SLA_MISSED_NEXT_RESPONSE": "Отправить push-уведомление, если диалог не успел получить следующий ответ SLA",
-        "SLA_MISSED_RESOLUTION": "Отправить push-уведомление, если диалог не соответствует SLA"
+        "SLA_MISSED_RESOLUTION": "Отправить push-уведомление, если диалог не соответствует SLA",
+        "VOICE_CALL_MISSED": "Send push notifications when you miss a call"
       },
       "PROFILE_IMAGE": {
         "LABEL": "Изображение профиля"
@@ -249,9 +265,14 @@
     "EMAIL_VERIFICATION_PENDING": "Похоже, что вы еще не подтвердили свой адрес электронной почты. Пожалуйста, проверьте свой почтовый ящик для подтверждения электронной почты.",
     "RESEND_VERIFICATION_MAIL": "Повторно отправить письмо с подтверждением",
     "EMAIL_VERIFICATION_SENT": "Письмо с подтверждением отправлено. Пожалуйста, проверьте свой почтовый ящик.",
+    "IMPERSONATION": {
+      "MESSAGE": "You are impersonating {name} ({email}). Any action you take will appear as this user.",
+      "STOP": "Stop impersonating"
+    },
     "ACCOUNT_SUSPENDED": {
       "TITLE": "Аккаунт заблокирован",
-      "MESSAGE": "Ваша учетная запись приостановлена. Пожалуйста, обратитесь в службу поддержки для получения дополнительной информации."
+      "MESSAGE": "Ваша учетная запись приостановлена. Пожалуйста, обратитесь в службу поддержки для получения дополнительной информации.",
+      "MANAGE_BILLING": "Manage billing"
     },
     "NO_ACCOUNTS": {
       "TITLE": "No account found",
@@ -264,7 +285,8 @@
     "CODE": {
       "BUTTON_TEXT": "Копировать",
       "CODEPEN": "Открыть в CodePen",
-      "COPY_SUCCESSFUL": "Код скопирован в буфер обмена"
+      "COPY_SUCCESSFUL": "Код скопирован в буфер обмена",
+      "COPY_ERROR": "Unable to copy to clipboard. Please try again."
     },
     "SHOW_MORE_BLOCK": {
       "SHOW_MORE": "Показать больше",
@@ -273,7 +295,8 @@
     "FILE_BUBBLE": {
       "DOWNLOAD": "Скачать",
       "UPLOADING": "Загружаем...",
-      "INSTAGRAM_STORY_UNAVAILABLE": "Эта история больше недоступна."
+      "INSTAGRAM_STORY_UNAVAILABLE": "Эта история больше недоступна.",
+      "INSTAGRAM_STORY_REPLY": "Ответил на вашу историю:"
     },
     "LOCATION_BUBBLE": {
       "SEE_ON_MAP": "Просмотреть на карте"
@@ -310,7 +333,9 @@
     "COMPANIES": "Компании",
     "ALL_COMPANIES": "Все компании",
     "CAPTAIN": "Капитан",
+    "CALLS": "Calls",
     "CAPTAIN_ASSISTANTS": "Ассистенты",
+    "CAPTAIN_OVERVIEW": "Обзор",
     "CAPTAIN_DOCUMENTS": "Документы",
     "CAPTAIN_RESPONSES": "FAQ",
     "CAPTAIN_TOOLS": "Инструменты",
@@ -323,9 +348,11 @@
     "AGENT_BOTS": "Боты",
     "AUDIT_LOGS": "Журнал аудита",
     "INBOXES": "Источники",
+    "WHATSAPP_TEMPLATES": "Templates",
     "NOTIFICATIONS": "Уведомления",
     "CANNED_RESPONSES": "Шаблонные ответы",
     "INTEGRATIONS": "Интеграции",
+    "DATA": "Data",
     "PROFILE_SETTINGS": "Настройки профиля",
     "ACCOUNT_SETTINGS": "Настройки аккаунта",
     "APPLICATIONS": "Приложения",
@@ -377,17 +404,205 @@
       "INFO_TEXT": "Позволить системе автоматически отмечать вас в автономном режиме, если вы не используете приложение или приборную панель.",
       "INFO_SHORT": "Автоматически отмечать оффлайн, когда вы не используете приложение."
     },
+    "SORT_TOOLTIP": "Сортировка",
+    "SORT_BY": "Сортировать по",
+    "SORT_GROUPS": {
+      "CREATED": "Sort by date of creation",
+      "ALPHABETICAL": "Sort in alphabetical order",
+      "UNREAD_COUNT": "Sort by unread count"
+    },
+    "SORT_OPTIONS": {
+      "CREATED_DESC": "Newest first",
+      "CREATED_ASC": "Oldest first",
+      "ALPHABETICAL_ASC": "Ascending (A - Z)",
+      "ALPHABETICAL_DESC": "Descending (Z - A)",
+      "UNREAD_COUNT_DESC": "Highest first",
+      "UNREAD_COUNT_ASC": "Lowest first"
+    },
     "DOCS": "Открыть документацию",
-    "SECURITY": "Безопасность"
+    "SECURITY": "Безопасность",
+    "CAPTAIN_AI": "Капитан",
+    "CONVERSATION_WORKFLOW": "Conversation Workflow"
+  },
+  "DATA_IMPORTS": {
+    "HEADER": "Data",
+    "DESCRIPTION": "Bring your existing contacts and past conversations into this account from another support tool. Each import runs in the background, so you can keep working while it finishes, track its progress, and review anything that was skipped along the way.",
+    "LOADING": "Fetching imports",
+    "DEFAULT_IMPORT_NAME": "Intercom import",
+    "DEFAULT_IMPORT_NAMES": {
+      "INTERCOM": "Intercom import",
+      "FRESHDESK": "Freshdesk import"
+    },
+    "TABS": {
+      "IMPORT": "Импортировать",
+      "EXPORT": "Экспорт"
+    },
+    "TYPES": {
+      "CONTACTS": "Контакты",
+      "CONVERSATIONS": "Диалоги",
+      "MESSAGES": "Сообщения"
+    },
+    "DRAWER": {
+      "TITLE": "New import",
+      "SOURCE": "Source",
+      "NAME": "Import name",
+      "NAME_PLACEHOLDER": "July support migration",
+      "ACCESS_KEY": "Intercom access key",
+      "ACCESS_KEY_PLACEHOLDER": "Paste your Intercom access key",
+      "INTERCOM_ACCESS_KEY": "Intercom access key",
+      "INTERCOM_ACCESS_KEY_PLACEHOLDER": "Paste your Intercom access key",
+      "FRESHDESK_API_KEY": "Freshdesk API key",
+      "FRESHDESK_API_KEY_PLACEHOLDER": "Paste your Freshdesk API key",
+      "FRESHDESK_DOMAIN": "Freshdesk domain",
+      "FRESHDESK_DOMAIN_PLACEHOLDER": "acme.freshdesk.com",
+      "DATA_TYPES": "Data to import",
+      "VALIDATING": "Validating access key...",
+      "VALID_KEY": "Access key validated.",
+      "INVALID_KEY": "Could not validate this access key.",
+      "ACTIVE_IMPORT": "Wait for the active import to finish before starting another one.",
+      "CANCEL": "Отменить",
+      "IMPORT": "Импортировать"
+    },
+    "EXPORT": {
+      "TITLE": "Exports are on the way",
+      "DESCRIPTION": "Export your contacts and conversations out of this account. This workflow is coming soon.",
+      "COMING_SOON": "Coming soon"
+    },
+    "TABLE": {
+      "TITLE": "Recent imports",
+      "EMPTY": "No imports yet",
+      "EMPTY_DESCRIPTION": "Start an import to bring your existing customer history into this account.",
+      "NEW_IMPORT": "Импортировать",
+      "COUNT": "{count} imports",
+      "UNNAMED": "Untitled import",
+      "IMPORTED_COUNT": "{count} imported",
+      "VIEW": "View import",
+      "NAME": "Имя",
+      "TYPE": "Тип",
+      "STATUS": "Статус",
+      "IMPORTED": "Imported",
+      "CREATED": "Создан",
+      "RETRY": "Повторить",
+      "ABANDON": "Abandon"
+    },
+    "DETAIL": {
+      "BACK": "Back to imports",
+      "ERRORS": "Errors",
+      "SKIP_LOGS": "Skip logs",
+      "SOURCE": "Source",
+      "IMPORT_TYPES": "Import types",
+      "CREATED": "Создан",
+      "DURATION": "Продолжительность",
+      "INITIATED_BY": "Started by",
+      "PROGRESS": "Import progress",
+      "PROGRESS_WITH_TOTAL": "{imported} of {total} imported",
+      "PROGRESS_WITHOUT_TOTAL": "{imported} imported",
+      "PROGRESS_OF_TOTAL": "of {total} imported",
+      "PROGRESS_IMPORTED": "imported",
+      "LAST_UPDATED_TOOLTIP": "Последнее обновление {time}",
+      "NO_SKIP_LOGS": "No skipped or failed records recorded.",
+      "DOWNLOAD_SKIP_LOGS": "Download CSV",
+      "DOWNLOAD_ERROR_LOGS": "Download CSV",
+      "ALL_SKIP_LOGS": "Все",
+      "KIND": "Kind",
+      "NO_ERRORS": "No errors recorded.",
+      "ERROR_CODE": "Code",
+      "SOURCE_OBJECT": "Source object",
+      "MESSAGE": "Сообщение"
+    },
+    "MONITOR": {
+      "LIVE": "Live updates every {seconds}s",
+      "LAST_UPDATED": "Последнее обновление {time}",
+      "REFRESH": "Обновить",
+      "REFRESHING": "Refreshing",
+      "STAGES": {
+        "unknown": "Waiting for update",
+        "queued": "Queued",
+        "contacts": "Importing contacts",
+        "conversations": "Importing conversations",
+        "finalizing": "Finalizing import",
+        "completed": "Выполнено",
+        "completed_with_errors": "Completed with errors",
+        "failed": "Не удалось",
+        "abandoned": "Abandoned"
+      }
+    },
+    "ALERTS": {
+      "IMPORT_STARTED": "Import has started.",
+      "IMPORT_RETRIED": "Import has been queued to resume.",
+      "IMPORT_RETRY_FAILED": "Could not retry the import.",
+      "IMPORT_ABANDONED": "Import has been abandoned.",
+      "IMPORT_FAILED": "Could not start the import."
+    }
+  },
+  "CAPTAIN_SETTINGS": {
+    "TITLE": "Captain Settings",
+    "DESCRIPTION": "Configure your AI models and features for Captain. Captain follows a credit based billing, you will be charged credits for every action Captain takes based on the model selected.",
+    "LOADING": "Loading Captain configuration...",
+    "LINK_TEXT": "Learn more about Captain Credits",
+    "NOT_ENABLED": "Captain is not enabled for your account. Please upgrade your plan to access Captain features.",
+    "MODEL_CONFIG": {
+      "TITLE": "Model Configuration",
+      "DESCRIPTION": "Select AI models for different features.",
+      "SELECT_MODEL": "Select model",
+      "CREDITS_PER_MESSAGE": "{credits} credit/message",
+      "COMING_SOON": "Coming soon",
+      "EDITOR": {
+        "TITLE": "Editor Features",
+        "DESCRIPTION": "Powers smart compose, grammar corrections, tone adjustments, and content enhancement in your message editor."
+      },
+      "ASSISTANT": {
+        "TITLE": "Ассистент",
+        "DESCRIPTION": "Handles automated responses, conversation summaries, and intelligent reply suggestions for customer interactions."
+      },
+      "COPILOT": {
+        "TITLE": "Co-pilot",
+        "DESCRIPTION": "Provides real-time contextual suggestions, knowledge base recommendations, and proactive insights during conversations."
+      }
+    },
+    "FEATURES": {
+      "TITLE": "Возможности",
+      "DESCRIPTION": "Enable or disable AI-powered features.",
+      "AUDIO_TRANSCRIPTION": {
+        "TITLE": "Audio Transcription",
+        "DESCRIPTION": "Automatically convert voice messages and call recordings into searchable text transcripts.",
+        "MODEL_TITLE": "Audio Transcription Model",
+        "MODEL_DESCRIPTION": "Select the AI model to use for converting audio messages into text transcripts"
+      },
+      "HELP_CENTER_SEARCH": {
+        "TITLE": "Help Center Search Indexing",
+        "DESCRIPTION": "Use AI for context aware search inside your help center articles."
+      }
+    },
+    "API": {
+      "SUCCESS": "Captain settings updated successfully.",
+      "ERROR": "Failed to update Captain settings. Please try again."
+    }
   },
   "BILLING_SETTINGS": {
+    "PAYMENT_RECOVERY": {
+      "DESCRIPTION": "Your payment is past due. Update your payment method or pay the outstanding invoice in the billing portal to keep your subscription active.",
+      "ACTION": "Resolve payment"
+    },
     "TITLE": "Платёж",
     "DESCRIPTION": "Управляйте подпиской здесь, обновите тарифный план и получите больше возможностей для вашей команды.",
     "CURRENT_PLAN": {
       "TITLE": "Текущий план",
       "PLAN_NOTE": "На данный момент вы подписаны на ** план{plan}** с **{quantity}** лицензиями",
       "SEAT_COUNT": "Количество мест",
-      "RENEWS_ON": "Продление"
+      "RENEWS_ON": "Продление",
+      "CANCELS_ON": "Cancels on",
+      "CURRENCY": "Currency"
+    },
+    "CURRENCY": {
+      "SELECT": {
+        "TITLE": "Choose your billing currency",
+        "DESCRIPTION": "Select the currency you'd like to be billed in. This can't be changed once your subscription is created."
+      },
+      "OPTIONS": {
+        "USD": "US Dollar (USD)",
+        "BRL": "Brazilian Real (BRL)"
+      }
     },
     "VIEW_PRICING": "Посмотреть цены",
     "MANAGE_SUBSCRIPTION": {
@@ -410,6 +625,38 @@
       "BUTTON_TXT": "Пообщайтесь с нами"
     },
     "NO_BILLING_USER": "Ваш платёжный счёт настраивается. Пожалуйста, обновите страницу и повторите попытку.",
+    "SHOPIFY": {
+      "TITLE": "Billing through Shopify",
+      "DESCRIPTION": "Your Chatwoot subscription is billed and managed securely through Shopify.",
+      "UNAVAILABLE": "Shopify billing is unavailable right now. Please contact support if this continues.",
+      "LOADING": "Checking your Shopify subscription...",
+      "PLAN_TITLE": "Shopify subscription",
+      "PLAN_DESCRIPTION": "Choose or manage your Chatwoot plan securely in Shopify.",
+      "CURRENT_PLAN": "Current plan",
+      "SUBSCRIPTION_STATUS": "Статус",
+      "PRICE": "Price",
+      "PER_MONTH": "{price} / month",
+      "PER_YEAR": "{price} / year",
+      "TRIAL_ENDS_ON": "Trial ends on",
+      "RENEWS_ON": "Продление",
+      "ACCESS_UNTIL": "Access until",
+      "LAST_VERIFIED": "Last verified",
+      "VIEW_PLANS": "View plans in Shopify",
+      "MANAGE_PLAN": "Manage in Shopify",
+      "RETRY": "Try again",
+      "ERROR_TITLE": "We could not verify your Shopify subscription",
+      "ERROR_DESCRIPTION": "Try again in a moment. Your last verified access has not been changed.",
+      "STALE_TITLE": "Showing your last verified subscription",
+      "STALE_DESCRIPTION": "Shopify could not be reached. Your access has not been changed.",
+      "STATUS": {
+        "PENDING": "В ожидании",
+        "ACTIVE": "Активно",
+        "TRIALING": "Trial",
+        "CANCELLED": "Cancellation scheduled",
+        "EXPIRED": "Expired",
+        "MISSING": "No active plan"
+      }
+    },
     "TOPUP": {
       "BUY_CREDITS": "Купить дополнительные кредиты",
       "MODAL_TITLE": "Купить ИИ кредиты",
@@ -423,6 +670,7 @@
       "PURCHASE": "Купить кредиты",
       "LOADING": "Загрузка настроек...",
       "FETCH_ERROR": "Не удалось загрузить настройки оплаты. Попробуйте ещё раз.",
+      "RETRY": "Повторить",
       "PURCHASE_ERROR": "Не удалось провести оплату. Попробуйте ещё раз.",
       "PURCHASE_SUCCESS": "Successfully added {credits} credits to your account",
       "CONFIRM": {
@@ -439,6 +687,7 @@
     "DESCRIPTION": "Управление настройками безопасности вашего аккаунта.",
     "LINK_TEXT": "Узнать больше о SAML SSO",
     "SAML_DISABLED_MESSAGE": "SAML SSO is currently disabled. Please contact your administrator to enable this feature.",
+    "NO_SETTINGS_AVAILABLE": "No security settings are available for this installation. Configure MFA encryption keys to enable two-factor enforcement.",
     "SAML": {
       "TITLE": "SAML SSO",
       "NOTE": "Настройка единого SAML входа для вашей учетной записи. Пользователи будут аутентифицироваться через вашего провайдера идентификации вместо использования электронной почты/пароля.",
@@ -503,6 +752,58 @@
       "INFO_SECTION": {
         "TITLE": "Информация о поставщике услуг SAML",
         "TOOLTIP": "Скопируйте эти значения и настройте их в вашем поставщике идентификации для установления соединения SAML"
+      }
+    }
+  },
+  "CONVERSATION_WORKFLOW": {
+    "INDEX": {
+      "HEADER": {
+        "TITLE": "Conversation Workflows",
+        "DESCRIPTION": "Configure rules and required fields for conversation resolution."
+      }
+    },
+    "REQUIRED_ATTRIBUTES": {
+      "TITLE": "Attributes required on resolution",
+      "DESCRIPTION": "When resolving a conversation, agents will be prompted to fill these attributes if they haven't yet.",
+      "NO_ATTRIBUTES": "No attributes added yet",
+      "ADD": {
+        "TITLE": "Add Attributes",
+        "SEARCH_PLACEHOLDER": "Поиск по атрибутам"
+      },
+      "SAVE": {
+        "SUCCESS": "Required attributes updated",
+        "ERROR": "Could not update required attributes, please try again"
+      },
+      "MODAL": {
+        "TITLE": "Решить разговор",
+        "DESCRIPTION": "Please fill in the following custom attributes before resolving this conversation",
+        "ACTIONS": {
+          "RESOLVE": "Решить разговор",
+          "CANCEL": "Отменить"
+        },
+        "PLACEHOLDERS": {
+          "TEXT": "Write a note...",
+          "NUMBER": "Enter a number",
+          "LINK": "Add a link",
+          "DATE": "Pick a date",
+          "LIST": "Выберите параметр"
+        },
+        "CHECKBOX": {
+          "YES": "Да",
+          "NO": "Нет"
+        }
+      },
+      "PAYWALL": {
+        "TITLE": "Upgrade to use required attributes",
+        "AVAILABLE_ON": "The required conversation attributes feature is available on the Business and Enterprise plans.",
+        "UPGRADE_PROMPT": "Upgrade your plan to prompt agents to fill required attributes before conversation resolution.",
+        "UPGRADE_NOW": "Обновить сейчас",
+        "CANCEL_ANYTIME": "Вы можете изменить или отменить ваш тарифный план в любое время"
+      },
+      "ENTERPRISE_PAYWALL": {
+        "AVAILABLE_ON": "The required conversation attributes feature is available on the paid plans.",
+        "UPGRADE_PROMPT": "Upgrade to a paid plan to enforce required attributes before conversation resolution.",
+        "ASK_ADMIN": "Пожалуйста, обратитесь к вашему администратору для обновления."
       }
     }
   },
@@ -591,7 +892,8 @@
         "CREATE_BUTTON": "Создать политику",
         "API": {
           "SUCCESS_MESSAGE": "Связанная политика успешно создана",
-          "ERROR_MESSAGE": "Не удалось создать связанную политику"
+          "ERROR_MESSAGE": "Не удалось создать связанную политику",
+          "INBOX_LINKED": "Inbox has been linked to the policy"
         }
       },
       "EDIT": {
@@ -604,6 +906,12 @@
           "DESCRIPTION": "{inboxName} ящик уже связан с другой политикой. Вы уверены, что хотите связать его с этой политикой? Он будет удален из другой политики.",
           "CONFIRM_BUTTON_LABEL": "Продолжить",
           "CANCEL_BUTTON_LABEL": "Отменить"
+        },
+        "INBOX_LINK_PROMPT": {
+          "TITLE": "Link inbox to policy",
+          "DESCRIPTION": "Would you like to link this inbox to the assignment policy?",
+          "LINK_BUTTON": "Link inbox",
+          "CANCEL_BUTTON": "Skip"
         },
         "API": {
           "SUCCESS_MESSAGE": "Связанная политика успешно обновлена",
@@ -643,7 +951,9 @@
           },
           "BALANCED": {
             "LABEL": "Сбалансированный",
-            "DESCRIPTION": "Назначить диалоги на основе доступной пропускной способности."
+            "DESCRIPTION": "Назначить диалоги на основе доступной пропускной способности.",
+            "PREMIUM_MESSAGE": "Upgrade to access balanced assignment and agent capacity management.",
+            "PREMIUM_BADGE": "Premium"
           }
         },
         "ASSIGNMENT_PRIORITY": {
@@ -662,6 +972,10 @@
           "DESCRIPTION": "Установите максимальное количество писем, которые могут быть назначены каждому агенту в пределах окна времени, чтобы избежать перезагрузки любого одного агента. Это требуемое поле по умолчанию используется для 100 диалогов в час.",
           "INPUT_MAX": "Назначить макс.",
           "DURATION": "Диалоги на каждого агента в каждом"
+        },
+        "EXCLUDE_OLDER_THAN": {
+          "LABEL": "Skip stale conversations",
+          "DESCRIPTION": "Skip unassigned conversations older than this. Defaults to 7 days; clear to disable."
         },
         "INBOXES": {
           "LABEL": "Добавленные ящики",
@@ -728,6 +1042,20 @@
           "REMOVE": {
             "SUCCESS_MESSAGE": "Агент успешно удален из политики",
             "ERROR_MESSAGE": "Не удалось удалить агента из политики"
+          }
+        },
+        "INBOX_LIMIT_API": {
+          "ADD": {
+            "SUCCESS_MESSAGE": "Inbox limit added successfully",
+            "ERROR_MESSAGE": "Failed to add inbox limit"
+          },
+          "UPDATE": {
+            "SUCCESS_MESSAGE": "Inbox limit updated successfully",
+            "ERROR_MESSAGE": "Failed to update inbox limit"
+          },
+          "DELETE": {
+            "SUCCESS_MESSAGE": "Inbox limit deleted successfully",
+            "ERROR_MESSAGE": "Failed to delete inbox limit"
           }
         }
       },

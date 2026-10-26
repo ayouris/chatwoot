@@ -2,11 +2,14 @@
 import { computed } from 'vue';
 
 import MessageMeta from '../MessageMeta.vue';
+import CaptainGenerationDetails from '../CaptainGenerationDetails.vue';
+import TranslationToggle from '../TranslationToggle.vue';
 
 import { emitter } from 'shared/helpers/mitt';
 import { useMessageContext } from '../provider.js';
 import { useI18n } from 'vue-i18n';
 
+import MessageFormatter from 'shared/helpers/MessageFormatter.js';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import { MESSAGE_VARIANTS, ORIENTATION } from '../constants';
 
@@ -14,9 +17,26 @@ const props = defineProps({
   hideMeta: { type: Boolean, default: false },
 });
 
-const { variant, orientation, inReplyTo, shouldGroupWithNext } =
-  useMessageContext();
+const {
+  variant,
+  orientation,
+  inReplyTo,
+  shouldGroupWithNext,
+  id,
+  isCaptainMessage,
+  showingOriginal,
+} = useMessageContext();
 const { t } = useI18n();
+
+const metaColorClass = computed(() =>
+  variant.value === MESSAGE_VARIANTS.PRIVATE
+    ? 'text-n-amber-12/50'
+    : 'text-n-slate-11'
+);
+
+const emailMetaClass = computed(() =>
+  variant.value === MESSAGE_VARIANTS.EMAIL ? 'px-3 pb-3' : ''
+);
 
 const varaintBaseMap = {
   [MESSAGE_VARIANTS.AGENT]: 'bg-n-solid-blue text-n-slate-12',
@@ -80,7 +100,7 @@ const replyToPreview = computed(() => {
 
   const { content, attachments } = inReplyTo.value;
 
-  if (content) return content;
+  if (content) return new MessageFormatter(content).formattedMessage;
   if (attachments?.length) {
     const firstAttachment = attachments[0];
     const fileType = firstAttachment.fileType ?? firstAttachment.file_type;
@@ -94,7 +114,7 @@ const replyToPreview = computed(() => {
 
 <template>
   <div
-    class="text-sm"
+    class="text-sm min-w-0"
     :class="[
       messageClass,
       {
@@ -107,21 +127,35 @@ const replyToPreview = computed(() => {
       class="p-2 -mx-1 mb-2 rounded-lg cursor-pointer bg-n-alpha-black1"
       @click="scrollToMessage"
     >
-      <span class="break-all line-clamp-2">
-        {{ replyToPreview }}
-      </span>
+      <div
+        v-dompurify-html="replyToPreview"
+        class="prose prose-bubble line-clamp-2"
+      />
     </div>
     <slot />
-    <MessageMeta
-      v-if="shouldShowMeta"
-      :class="[
-        flexOrientationClass,
-        variant === MESSAGE_VARIANTS.EMAIL ? 'px-3 pb-3' : '',
-        variant === MESSAGE_VARIANTS.PRIVATE
-          ? 'text-n-amber-12/50'
-          : 'text-n-slate-11',
-      ]"
-      class="mt-2"
-    />
+    <template v-if="shouldShowMeta">
+      <CaptainGenerationDetails
+        v-if="isCaptainMessage"
+        :message-id="id"
+        class="mt-2"
+      >
+        <TranslationToggle
+          :icon="false"
+          :showing-original="showingOriginal"
+          @toggle="showingOriginal = !showingOriginal"
+        />
+        <template #meta>
+          <MessageMeta
+            class="shrink-0 whitespace-nowrap"
+            :class="[emailMetaClass, metaColorClass]"
+          />
+        </template>
+      </CaptainGenerationDetails>
+      <MessageMeta
+        v-else
+        :class="[flexOrientationClass, emailMetaClass, metaColorClass]"
+        class="mt-2"
+      />
+    </template>
   </div>
 </template>

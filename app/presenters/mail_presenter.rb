@@ -126,15 +126,20 @@ class MailPresenter < SimpleDelegator
 
   def from
     # changing to downcase to avoid case mismatch while finding contact
-    Array.wrap(@mail.reply_to.presence || @mail.from).map(&:downcase)
+    addresses = Array.wrap(@mail.reply_to).compact_blank.presence || Array.wrap(@mail.from).compact_blank
+    addresses.map(&:downcase)
   end
 
   def sender_name
-    Mail::Address.new((@mail[:reply_to] || @mail[:from]).value).name
+    parse_mail_address((@mail[:reply_to] || @mail[:from]).value)&.name
   end
 
   def original_sender
-    from_email_address(@mail[:reply_to].try(:value)) || @mail['X-Original-Sender'].try(:value) || from_email_address(from.first)
+    [
+      @mail[:reply_to]&.value,
+      @mail['X-Original-Sender']&.value,
+      @mail[:from]&.value
+    ].filter_map { |email| parse_mail_address(email)&.address }.first
   end
 
   def headers_data
@@ -145,10 +150,6 @@ class MailPresenter < SimpleDelegator
     }.compact
 
     headers.presence
-  end
-
-  def from_email_address(email)
-    Mail::Address.new(email).address
   end
 
   def email_forwarded_for
@@ -175,10 +176,19 @@ class MailPresenter < SimpleDelegator
 
   def notification_email_from_chatwoot?
     # notification emails are send via mailer sender email address. so it should match
-    original_sender == Mail::Address.new(ENV.fetch('MAILER_SENDER_EMAIL', 'Chatwoot <accounts@chatwoot.com>')).address
+    configured_sender = Mail::Address.new(ENV.fetch('MAILER_SENDER_EMAIL', 'Chatwoot <accounts@chatwoot.com>')).address
+    original_sender.to_s.casecmp?(configured_sender)
   end
 
   private
+
+  def parse_mail_address(email)
+    return if email.blank?
+
+    Mail::Address.new(email)
+  rescue Mail::Field::ParseError, Mail::Field::IncompleteParseError
+    nil
+  end
 
   def auto_submitted?
     @mail['Auto-Submitted'].present? && @mail['Auto-Submitted'].value != 'no'

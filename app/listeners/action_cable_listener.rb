@@ -69,11 +69,12 @@ class ActionCableListener < BaseListener
     broadcast(account, tokens, CONVERSATION_CREATED, conversation.push_event_data)
   end
 
-  def conversation_read(event)
-    conversation, account = extract_conversation_and_account(event)
-    tokens = user_tokens(account, conversation.inbox.members)
+  def conversation_bot_handoff(event)
+    broadcast_to_inbox_members(event, CONVERSATION_BOT_HANDOFF)
+  end
 
-    broadcast(account, tokens, CONVERSATION_READ, conversation.push_event_data)
+  def conversation_read(event)
+    broadcast_to_inbox_members(event, CONVERSATION_READ)
   end
 
   def conversation_status_changed(event)
@@ -88,6 +89,15 @@ class ActionCableListener < BaseListener
     tokens = user_tokens(account, conversation.inbox.members) + contact_inbox_tokens(conversation.contact_inbox)
 
     broadcast(account, tokens, CONVERSATION_UPDATED, conversation.push_event_data)
+  end
+
+  def conversation_unread_count_changed(event)
+    account, inbox_members = ::Conversations::UnreadCounts::BroadcastScope.new(event).perform
+    return if account.blank? || !account.feature_enabled?('conversation_unread_counts')
+
+    tokens = user_tokens(account, inbox_members)
+
+    broadcast(account, tokens, CONVERSATION_UNREAD_COUNT_CHANGED, {})
   end
 
   def conversation_typing_on(event)
@@ -123,24 +133,20 @@ class ActionCableListener < BaseListener
   end
 
   def assignee_changed(event)
-    conversation, account = extract_conversation_and_account(event)
-    tokens = user_tokens(account, conversation.inbox.members)
-
-    broadcast(account, tokens, ASSIGNEE_CHANGED, conversation.push_event_data)
+    # Model callbacks identify automatic assignment (auto-assignment or automation
+    # rules) by performed_by. The V2 AssignmentService also dispatches an event with
+    # user (the assigned agent, NOT the performer). Neither requires inferring
+    # automation from a missing Current.user.
+    automatic_assignment = [Inbox, AssignmentPolicy, AutomationRule].include?(event.data[:performed_by].class) || event.data[:user].present?
+    broadcast_to_inbox_members(event, ASSIGNEE_CHANGED, automatic_assignment: automatic_assignment)
   end
 
   def team_changed(event)
-    conversation, account = extract_conversation_and_account(event)
-    tokens = user_tokens(account, conversation.inbox.members)
-
-    broadcast(account, tokens, TEAM_CHANGED, conversation.push_event_data)
+    broadcast_to_inbox_members(event, TEAM_CHANGED)
   end
 
   def conversation_contact_changed(event)
-    conversation, account = extract_conversation_and_account(event)
-    tokens = user_tokens(account, conversation.inbox.members)
-
-    broadcast(account, tokens, CONVERSATION_CONTACT_CHANGED, conversation.push_event_data)
+    broadcast_to_inbox_members(event, CONVERSATION_CONTACT_CHANGED)
   end
 
   def contact_created(event)
@@ -175,13 +181,25 @@ class ActionCableListener < BaseListener
 
   private
 
+  def broadcast_to_inbox_members(event, event_name, **metadata)
+    conversation, account = extract_conversation_and_account(event)
+
+    broadcast(account, user_tokens(account, conversation.inbox.members), event_name, conversation.push_event_data.merge(metadata))
+  end
+
   def account_token(account)
     "account_#{account.id}"
   end
 
   def typing_event_listener_tokens(account, conversation, user)
-    current_user_token = user.is_a?(Contact) ? conversation.contact_inbox.pubsub_token : user.pubsub_token
-    (user_tokens(account, conversation.inbox.members) + [conversation.contact_inbox.pubsub_token]) - [current_user_token]
+    current_user_token = if user.is_a?(Contact)
+                           conversation.contact_inbox.pubsub_token
+                         elsif user.respond_to?(:pubsub_token)
+                           user.pubsub_token
+                         end
+
+    tokens = user_tokens(account, conversation.inbox.members) + [conversation.contact_inbox.pubsub_token]
+    current_user_token.present? ? tokens - [current_user_token] : tokens
   end
 
   def user_tokens(account, agents)

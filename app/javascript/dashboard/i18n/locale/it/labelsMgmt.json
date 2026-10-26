@@ -5,6 +5,9 @@
     "LOADING": "Recupero etichette",
     "DESCRIPTION": "Le etichette aiutano a categorizzare e dare priorità alle conversazioni e ai lead. È possibile assegnare un'etichetta a una conversazione o a un contatto utilizzando il pannello laterale.",
     "LEARN_MORE": "Maggiori informazioni sulle etichette",
+    "COUNT": "{n} etichetta | {n} etichette",
+    "SEARCH_PLACEHOLDER": "Cerca etichette...",
+    "NO_RESULTS": "Nessuna etichetta trovata corrispondente alla tua ricerca",
     "SEARCH_404": "Non ci sono elementi che corrispondono a questa richiesta",
     "LIST": {
       "404": "Non ci sono etichette disponibili in questo account.",
@@ -13,7 +16,8 @@
       "TABLE_HEADER": {
         "NAME": "Nome",
         "DESCRIPTION": "Descrizione",
-        "COLOR": "Colore"
+        "COLOR": "Colore",
+        "ACTION": "Azioni"
       }
     },
     "FORM": {
@@ -38,20 +42,6 @@
       "CREATE": "Crea",
       "DELETE": "Elimina",
       "CANCEL": "Annulla"
-    },
-    "SUGGESTIONS": {
-      "TOOLTIP": {
-        "SINGLE_SUGGESTION": "Aggiungi etichetta alla conversazione",
-        "MULTIPLE_SUGGESTION": "Seleziona questa etichetta",
-        "DESELECT": "Deseleziona etichetta",
-        "DISMISS": "Ignora suggerimento"
-      },
-      "POWERED_BY": "Chatwoot AI",
-      "DISMISS": "Ignora",
-      "ADD_SELECTED_LABELS": "Aggiungi etichette selezionate",
-      "ADD_SELECTED_LABEL": "Aggiungi etichetta selezionata",
-      "ADD_ALL_LABELS": "Aggiungi tutte le etichette",
-      "SUGGESTED_LABELS": "Etichette suggerite"
     },
     "ADD": {
       "TITLE": "Aggiungi etichetta",

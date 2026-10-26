@@ -9,6 +9,7 @@
       "ADMINISTRATOR": "Yönetici",
       "AGENT": "Kullanıcı"
     },
+    "COUNT": "{n} agent | {n} agents",
     "LIST": {
       "404": "Bu hesapla ilişkilendirilmiş hesap yok",
       "TITLE": "Ekibinizdeki temsilcileri yönetin",
@@ -31,7 +32,7 @@
           "PLACEHOLDER": "Lütfen temsilcinin adını girin"
         },
         "AGENT_TYPE": {
-          "LABEL": "Agent Type",
+          "LABEL": "Rol",
           "PLACEHOLDER": "Lütfen bir rol seçin",
           "ERROR": "Rol gereklidir"
         },
@@ -68,8 +69,8 @@
           "PLACEHOLDER": "Lütfen temsilcinin adını girin"
         },
         "AGENT_TYPE": {
-          "LABEL": "Agent Type",
-          "PLACEHOLDER": "Please select a type",
+          "LABEL": "Rol",
+          "PLACEHOLDER": "Lütfen bir rol seçin",
           "ERROR": "Agent type is required"
         },
         "EMAIL": {
@@ -96,6 +97,8 @@
         "ERROR_MESSAGE": "Woot Sunucusuna bağlanılamadı, Lütfen daha sonra tekrar deneyin"
       }
     },
+    "SEARCH_PLACEHOLDER": "Temsilci ara...",
+    "NO_RESULTS": "No agents found matching your search",
     "SEARCH": {
       "NO_RESULTS": "Sonuç bulunamadı."
     },

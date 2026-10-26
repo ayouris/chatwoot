@@ -6,6 +6,9 @@
 @import 'shared/assets/fonts/InterDisplay/inter-display';
 @import 'shared/assets/fonts/inter';
 
+// Typography Utilities
+@import 'typography';
+
 // Next Colors
 @import 'next-colors';
 
@@ -13,7 +16,6 @@
 @import 'base';
 
 // Plugins
-@import 'plugins/multiselect';
 @import 'plugins/date-picker';
 
 html,

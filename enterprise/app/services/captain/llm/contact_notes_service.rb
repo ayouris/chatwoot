@@ -1,7 +1,8 @@
 class Captain::Llm::ContactNotesService < Llm::BaseAiService
   include Integrations::LlmInstrumentation
+
   def initialize(assistant, conversation)
-    super()
+    super(feature: 'assistant', account: conversation.account)
     @assistant = assistant
     @conversation = conversation
     @contact = conversation.contact
@@ -20,8 +21,7 @@ class Captain::Llm::ContactNotesService < Llm::BaseAiService
 
   def generate_notes
     response = instrument_llm_call(instrumentation_params) do
-      chat
-        .with_params(response_format: { type: 'json_object' })
+      json_chat
         .with_instructions(system_prompt)
         .ask(@content)
     end
@@ -55,7 +55,7 @@ class Captain::Llm::ContactNotesService < Llm::BaseAiService
   def parse_response(response)
     return [] if response.nil?
 
-    JSON.parse(response.strip).fetch('notes', [])
+    JSON.parse(sanitize_json_response(response)).fetch('notes', [])
   rescue JSON::ParserError => e
     Rails.logger.error "Error in parsing GPT processed response: #{e.message}"
     []
