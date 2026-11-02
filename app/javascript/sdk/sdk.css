@@ -54,6 +54,12 @@
   z-index: 2147483000 !important;
 }
 
+.woot-widget-bubble-center-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .woot-widget-bubble:focus-visible {
   outline: 2px solid AccentColor !important;
   outline: 2px solid -webkit-focus-ring-color !important;
@@ -153,10 +159,10 @@
 
 .woot-widget-bubble svg {
   all: revert;
-  height: 24px !important;
-  margin: 20px !important;
+  height: 48px !important;
+  margin: 0px !important;
   padding: 0 !important;
-  width: 24px !important;
+  width: 48px !important;
 }
 
 .woot-widget-bubble.woot-widget-bubble-color--lighter path {
@@ -182,7 +188,7 @@
   content: ' ';
   display: inline;
   height: 24px;
-  left: 32px;
+  left: 31px;
   position: absolute;
   top: 20px;
   width: 2px;
